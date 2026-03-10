@@ -74,9 +74,6 @@ class Testset(object, metaclass=abc.ABCMeta):
     def set_name(self, name: str) -> None: pass
 
     @abc.abstractmethod
-    def add_target(self, name: str, config: str | None) -> None: pass
-
-    @abc.abstractmethod
     def get_target(self) -> Target | None: pass
 
     @abc.abstractmethod
@@ -93,6 +90,11 @@ class Testset(object, metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
     def new_sdk_netlist_power_test(self, name: str, flags: str | None = None) -> SdkTest: pass
+
+    @abc.abstractmethod
+    def import_pytest(
+        self, path: str, pytest_exe: str = 'pytest'
+    ) -> None: pass
 
     @abc.abstractmethod
     def get_property(self, name: str) -> Any: pass
